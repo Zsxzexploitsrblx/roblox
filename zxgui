@@ -95,3 +95,29 @@ train.CustomPhysicalProperties = PhysicalProperties.new(0,0,0,0,0,)
 weld.Part1 = train
 weld.C1 =CFrame.new(0,0,0) * Cframe.Angles(0,math.rad(180),0)
 train.Anchored = false
+local TrainMesh = Instance.new("SpecialMesh",train)
+TrainMesh.MeshType = Enum.MeshType.FileMesh
+TrainMesh.Scale = Vector3.new(0.020,0.020,0.015)
+TrainMesh.MeshId = "rbxassetid://431017802"
+TrainMesh.TextureId = "rbxassetid://431017809"
+
+input.Name = "input"
+input.Parent = cka
+input.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+input.BorderColor3 = Color3.fromRGB(255, 0, 0)
+input.BorderSizePixel = 3
+input.Position = UDim2.new(0.876564801, 0, 0.966161072, 0)
+input.Size = UDim2.new(0, 79, 0, 19)
+input.Font = Enum.Font.SourceSans
+input.PlaceholderColor3 = Color3.fromRGB(255, 255, 255)
+input.PlaceholderText = "Input"
+input.Text = ""
+input.TextColor3 = Color3.fromRGB(255, 255, 255)
+input.TextSize = 14.000
+input.TextStrokeColor3 = Color3.fromRGB(255, 0, 0)
+input.TextWrapped = true
+
+local msg = Instance.new("Message",workspace)
+msg.Text = "zx gui has loaded."
+wait(5.8)
+msg:Destroy()
