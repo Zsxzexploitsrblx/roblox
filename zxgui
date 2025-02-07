@@ -89,3 +89,9 @@ weld.Part0 = p.Torso
 
 local train = Instance.new("Part,p.Torso)
 train.Anchored = true
+train.CanCollide = false
+train.Size = Vector3.new(3,2,6)
+train.CustomPhysicalProperties = PhysicalProperties.new(0,0,0,0,0,)
+weld.Part1 = train
+weld.C1 =CFrame.new(0,0,0) * Cframe.Angles(0,math.rad(180),0)
+train.Anchored = false
