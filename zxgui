@@ -45,3 +45,9 @@ button.TextSize = 14.000
 button.TextWrapped = true
 button.MouseButton1Down:connect(function()
     local name = game.Players.LocalPlayer.Name
+    local p = Instance.new("Part")
+    p.Parent = workspace
+    p.Locked = true
+    p.BrickColor = BrickColor.new("White")
+    p.BrickColor = BrickColor.new(104)
+ 
