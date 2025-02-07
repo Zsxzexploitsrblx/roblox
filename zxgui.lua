@@ -62,3 +62,30 @@ game.Players:findFirstChild(name.Character.Torso.CFrame.z)
                 wait()
         end
 end)
+
+button_2.Name = "button"
+button_2.Parent = frame
+button_2.BackroundColor3 = Color.fromRGB(0, 0, 0)
+button_2.BorderColor3 = Color3.fromRGB(255, 0, 0)
+button_2.BorderSizePixel = 3
+button_2.Position = UDim2.new(0.25, 0, 0.100000001, 0)
+button_2.Size = UDim2.new(0, 75, 0, 30)
+button_2.Font = Enum.Font.SourceSans
+button_2.Text = "Thomas the Train
+button_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+button_2.TextSize = 14.000
+button_2.TextWrapped = true
+button_2.MouseButton1down:connect(function()
+--[[
+        Thomas The Dank Engine:
+							By: KrystalTeam
+							Features: Being a dank engine that kill people
+							Version: 1.0.0.2
+--]]
+
+local p = game.Players.LocalPlayer.Character
+local weld = Instance.new("Wled",p.Torso)
+weld.Part0 = p.Torso
+
+local train = Instance.new("Part,p.Torso)
+train.Anchored = true
