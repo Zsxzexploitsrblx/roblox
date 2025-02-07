@@ -1,0 +1,47 @@
+local cka = Instance.new(“ScreenGui”)
+local frame = Instance.new(“frame”)
+local titler = Instance.new(“TextLabel”)
+local button = Instance.new(“TextButton”)
+local button_1 = Instance.new(“TextButton” 
+local button_2 = Instance.new(“TextButton”)
+local button_3 = Instance.new(“Textbutton”)
+local button_4 = Instance.new(“Textbutton”)
+
+—properties
+
+cka.Name = "cka"
+cka.Parent = game.CoreGui
+
+frame.Name = “frame”
+frame.Parent = cka
+frame.BackroundColor3 = Color3.fromRGB(0, 0, 0)
+frame.BorderColor3 = Color3.fromRGB(255, 0, 0)
+frame.BorderSizePixel = 3
+frame.Position = UDim2.new(0,3,0.3,0)
+frame.Size = UDim2.new(0, 300, 0, 400) 
+
+titler.Name = "titler"
+titler.Parent = frame
+titler.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+titler.BorderColor3 = Color3.fromRGB(255, 0, 0)
+titler.BorderSizePixel = 3
+titler.Size = UDim2.new(0, 300, 0, 40)
+titler.Font = Enum.Font.SourceSans
+titler.Text = "zxgui by team zxs"
+titler.TextColor3 = Color3.fromRGB(255, 255, 255)
+titler.TextSize = 24.000
+
+button.Name = "button"
+button.Parent = frame
+button.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+button.BorderColor3 = Color3.fromRGB(255, 0, 0)
+button.BorderSizePixel = 3
+button.Position = UDim2.new(0, 0, 0.100000001, 0)
+button.Size = UDim2.new(0, 75, 0, 30)
+button.Font = Enum.Font.SourceSans
+button.Text = "Floating Pad"
+button.TextColor3 = Color3.fromRGB(255, 255, 255)
+button.TextSize = 14.000
+button.TextWrapped = true
+button.MouseButton1Down:connect(function()
+    local name = game.Players.LocalPlayer.Name
