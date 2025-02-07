@@ -50,4 +50,6 @@ button.MouseButton1Down:connect(function()
     p.Locked = true
     p.BrickColor = BrickColor.new("White")
     p.BrickColor = BrickColor.new(104)
- 
+    p.Size = Vector3.new(8, 1.2, 8)
+    p.Anchored = true
+    local m = Instance.new("CylinderMesh")
