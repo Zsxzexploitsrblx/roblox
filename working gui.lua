@@ -1,6 +1,5 @@
 local ScreenGui = Instance.new("ScreenGui"
 screengui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-
 local player = game.Players.LocalPlayer
 
 -- create a frame
@@ -53,3 +52,5 @@ local button1 = Instance.new("TextButton")
 button1.Size = UDim2.new(0, 275, 0, 35)
 button1.Position = UDim2.new(0, 260, 0, 25)
 button1.Text = "Goto User"
+button1.Text = 16
+button1.Parent = frame
