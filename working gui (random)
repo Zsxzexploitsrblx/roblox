@@ -1,0 +1,31 @@
+local ScreenGui = Instance.new("ScreenGui"
+screengui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+-- create a frame
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(0, 300, 0, 200)
+frame.Position 0 UDim2.new(0.5, -140, 0.5, -10)
+frame.BackroundColor3 = Color3.fromRGB(200, 200, 200)
+frame.Parent = ScreenGui
+
+-- create a text label
+local TextLabel = Instance.new("TextLabel")
+textLabel.Size = UDim2.new(0, 280, 0, 40)
+textLabel.Position = UDim2.new(0, 10, 0, 10)
+textLabel.Text = "Choose An Option:"
+textLabel.TextSize = 16
+textLabel.Parent = frame
+
+-- create the textbox for a user
+local textBox = Instance.new("TextBox")
+textBox.Size = UDim2.new(0, 270, 0, 30)
+textBox.Position = UDim2.new(0, 20, 0, 20)
+textBox.PlaceholderText = Type your text here..."
+textBox.ClearTextOnFocus = true
+textBox.Parent = ScreenGui
+
+-- create button1
+local button1 = Instance.new("TextButton")
+button1.Size = UDim2.new(0, 275, 0, 35)
+button1.Position = UDim2.new(0, 260, 0, 25)
+button1.Text = "Goto User"
