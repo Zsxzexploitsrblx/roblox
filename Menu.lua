@@ -1,128 +1,83 @@
 local player = game.Players.LocalPlayer
 local playerGui = player:WaitForChild("Menu")
 
--- instances
-local screeng = Instance.new("ScreenGUI")
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = playerGui
+screenGui.Name = "MyCustomGUI"
+
 local frame = Instance.new("Frame")
-local textb = Instance.new("Textbutton") -- Fly
-local textb = Instance.new("Textbutton") -- Speed Gui
-local textb = Instance.new("Textbutton") -- Noclip
-local textb = Instance.new("Textbutton") -- View User
-local textb = Instance.new("Textbutton") -- The Chosen one (NOT MINE)
+frame.Parent = screenGui
+frame.Size = UDim2.new(0, 300, 0, 500)
+frame.Position = UDim2.new(0.5, -150, 0.5, -250)
+frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+frame.BorderSizePixel = 0
 
+-- Function to create buttons
+local function createButton(name, position, action)
+    local button = Instance.new("TextButton")
+    button.Parent = frame
+    button.Size = UDim2.new(0, 250, 0, 50)
+    button.Position = position
+    button.Text = name
+    button.BackgroundColor3 = Color3.fromRGB(0, 123, 255)  -- Blue button
+    button.TextColor3 = Color3.fromRGB(255, 255, 255)  -- White text
+    button.Font = Enum.Font.SourceSans
+    button.TextSize = 24
+    
+    button.MouseButton1Click:Connect(function()
+        action()
+    end)
+end
 
+-- Actions for buttons
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
--- Fly (may be broken)
-local player = game.Players.LocalPlayer
-local character = player.Character or player.CharacterAdded:Wait()
-local humanoid = character:WaitForChild("Humanoid")
 local flying = false
 local speed = 50
-local bodyVelocity
+local noclip = false
 
--- Create a BodyVelocity object for flying
-local function startFlying()
-    if flying then return end
-    flying = true
-
-    bodyVelocity = Instance.new("BodyVelocity")
-    bodyVelocity.MaxForce = Vector3.new(500000, 500000, 500000) -- Make sure the force is strong enough
-    bodyVelocity.Velocity = Vector3.new(0, speed, 0) -- Start with upward speed
-    bodyVelocity.Parent = character:WaitForChild("HumanoidRootPart")
-    
-    -- Optional: make the camera follow the character's head while flying
-    game:GetService("TweenService"):Create(
-        workspace.CurrentCamera, 
-        TweenInfo.new(0.5), 
-        {FieldOfView = 90} 
-    ):Play()
-end
-
--- Stop the flying by removing BodyVelocity
-local function stopFlying()
-    if not flying then return end
-    flying = false
-
-    if bodyVelocity then
-        bodyVelocity:Destroy()
-    end
-end
-
--- Toggle the flying state
+-- Fly action
 local function toggleFly()
     if flying then
-        stopFlying()
+        -- Stop flying (clear BodyVelocity)
+        local humanoidRootPart = player.Character:WaitForChild("HumanoidRootPart")
+        for _, v in pairs(player.Character:GetChildren()) do
+            if v:IsA("BodyVelocity") then
+                v:Destroy()
+            end
+        end
+        flying = false
+        print("Fly Disabled")
     else
-        startFlying()
+        -- Start flying
+        local bodyVelocity = Instance.new("BodyVelocity")
+        bodyVelocity.MaxForce = Vector3.new(500000, 500000, 500000)
+        bodyVelocity.Velocity = Vector3.new(0, speed, 0)
+        bodyVelocity.Parent = player.Character:WaitForChild("HumanoidRootPart")
+        flying = true
+        print("Fly Enabled")
     end
 end
 
--- Keybind for flying (e.g., pressing the "F" key)
-game:GetService("UserInputService").InputBegan:Connect(function(input, gameProcessed)
-    if gameProcessed then return end
-    if input.KeyCode == Enum.KeyCode.F then
-        toggleFly()
+-- Noclip action
+local function toggleNoclip()
+    if noclip then
+        for _, part in pairs(player.Character:GetChildren()) do
+            if part:IsA("BasePart") then
+                part.CanCollide = true
+            end
+        end
+        noclip = false
+        print("Noclip Disabled")
+    else
+        for _, part in pairs(player.Character:GetChildren()) do
+            if part:IsA("BasePart") then
+                part.CanCollide = false
+            end
+        end
+        noclip = true
+        print("Noclip Enabled")
     end
-end)
+end
 
 -- Speed Gui (default is 16)
 
@@ -224,5 +179,3 @@ frame.InputEnded:Connect(function(input)
         onDragEnd()
     end
 end)
-
--- noclip
