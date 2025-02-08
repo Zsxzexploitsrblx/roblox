@@ -1,0 +1,31 @@
+local screengui = Instance.new("ScreenGui")
+screengui.Parent 0 game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+-- create the text label
+local textlabel = Instance.new("TextLabel")
+textlabel.Size = UDim2.new(0, 300, 0, 50)
+textlabel.Position = UDim2.new(0.5, -150, 0.2, 0)
+textlabel..Text = Type User below:"
+textlabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+textlabel.BackroundTransparency = 1
+textlabel.Parent = screengui
+
+-- create textbox
+local textbox = Instance.new("TextBox")
+textBox.Size = UDim2.new(0, 300, 0, 50)
+textbox.Position = UDim2.new(0.5, -150, 0.3, 0)
+textbox.PlaceholderText = "Enter User here..."
+textbox.ClearTextOnFocus = true
+textbox.Parent = screengui
+
+--print what the user is
+textbox.FocusLost:Connect(function(enterPressed)
+    if enterPressed the
+        -- Output update textl
+        local typedtext = textbox.Text
+        print("User typed: " .. typedText)
+
+        -- update textl with input
+        textlabel.Text = "You typed: " .. typedText
+    end
+end)
