@@ -1,6 +1,8 @@
 local ScreenGui = Instance.new("ScreenGui"
 screengui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
+local player = game.Players.LocalPlayer
+
 -- create a frame
 local frame = Instance.new("Frame")
 frame.Size = UDim2.new(0, 300, 0, 200)
@@ -16,13 +18,35 @@ textLabel.Text = "Choose An Option:"
 textLabel.TextSize = 16
 textLabel.Parent = frame
 
--- create the textbox for a user
-local textBox = Instance.new("TextBox")
-textBox.Size = UDim2.new(0, 270, 0, 30)
-textBox.Position = UDim2.new(0, 20, 0, 20)
-textBox.PlaceholderText = Type your text here..."
-textBox.ClearTextOnFocus = true
-textBox.Parent = ScreenGui
+-- create the input for a user
+local userInput = Instance.new("UserInput"
+local function tp()
+    local username = userInput.Text
+local messageLabel
+if username == "" then
+    messageLabel.Text = "Please enter a username
+    return
+end
+
+-- find the player by input
+local targetPlayer = game.Players:FindFirstChild(username)
+
+if targetPlayer then
+
+   local character = targetPlayer.Character
+  if character and character:FindFiratChild("HumaniisRootPart") then
+      player.Character:MoveTo(character.HumanoidRootPart.Position
+      messageLabel.Text = Teleported to " .. username
+else
+      messageLabel.Text = username .. "is not in the game or has no character."
+  end
+else
+      messageLabel.Text = "Player not found: " .. username
+    end
+end
+
+
+button1.MouseButton1Click:Connect(teleportToPlayer)
 
 -- create button1
 local button1 = Instance.new("TextButton")
