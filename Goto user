@@ -1,7 +1,0 @@
-local screeng = Instance.new("ScreenGUI")
-local frame = Instance.new("Frame")
-local textb = Instance.new("Textbutton") -- Fly
-local textb = Instance.new("Textbutton") -- Speed Gui
-local textb = Instance.new("Textbutton") -- Noclip
-local textb = Instance.new("Textbutton") -- View User
-local textb = Instance.new("Textbutton") -- The Chosen one (NOT MINE)
