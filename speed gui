@@ -52,3 +52,49 @@ end
 
 -- Connect button click to the changeSpeed function
 applyButton.MouseButton1Click:Connect(changeSpeed)
+
+-- Make the frame draggable
+local dragging = false
+local dragInput = nil
+local dragStartPos = nil
+local dragStart = nil
+
+-- Function to start dragging
+local function onDragStart(input)
+    dragging = true
+    dragInput = input
+    dragStartPos = frame.Position
+    dragStart = input.Position
+end
+
+-- Function to update the position while dragging
+local function onDragMove(input)
+    if dragging then
+        local delta = input.Position - dragStart
+        frame.Position = UDim2.new(dragStartPos.X.Scale, dragStartPos.X.Offset + delta.X, dragStartPos.Y.Scale, dragStartPos.Y.Offset + delta.Y)
+    end
+end
+
+-- Function to stop dragging
+local function onDragEnd()
+    dragging = false
+end
+
+-- Connect drag events to the frame
+frame.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        onDragStart(input)
+    end
+end)
+
+frame.InputChanged:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseMovement then
+        onDragMove(input)
+    end
+end)
+
+frame.InputEnded:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        onDragEnd()
+    end
+end)
