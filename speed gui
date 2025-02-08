@@ -1,0 +1,54 @@
+-- LocalScript (Place this inside a LocalPlayer's GUI, like a ScreenGui)
+
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+
+-- Create the GUI elements
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = player:WaitForChild("PlayerGui")
+
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(0, 300, 0, 150)
+frame.Position = UDim2.new(0.5, -150, 0.5, -75)
+frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+frame.BackgroundTransparency = 0.5
+frame.Parent = screenGui
+
+local userInput = Instance.new("TextBox")
+userInput.Size = UDim2.new(0, 250, 0, 50)
+userInput.Position = UDim2.new(0, 25, 0, 25)
+userInput.PlaceholderText = "Enter Speed"
+userInput.Text = ""
+userInput.Parent = frame
+
+local applyButton = Instance.new("TextButton")
+applyButton.Size = UDim2.new(0, 250, 0, 50)
+applyButton.Position = UDim2.new(0, 25, 0, 85)
+applyButton.Text = "Apply Speed"
+applyButton.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+applyButton.Parent = frame
+
+local messageLabel = Instance.new("TextLabel")
+messageLabel.Size = UDim2.new(0, 250, 0, 25)
+messageLabel.Position = UDim2.new(0, 25, 0, 120)
+messageLabel.Text = ""
+messageLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+messageLabel.BackgroundTransparency = 1
+messageLabel.Parent = frame
+
+-- Function to apply speed change
+local function changeSpeed()
+    local speed = tonumber(userInput.Text)
+    
+    -- Check if the input is a valid number
+    if speed and speed > 0 then
+        humanoid.WalkSpeed = speed
+        messageLabel.Text = "Speed set to: " .. speed
+    else
+        messageLabel.Text = "Invalid speed! Please enter a positive number."
+    end
+end
+
+-- Connect button click to the changeSpeed function
+applyButton.MouseButton1Click:Connect(changeSpeed)
