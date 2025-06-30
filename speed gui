@@ -59,6 +59,22 @@ local dragInput = nil
 local dragStartPos = nil
 local dragStart = nil
 
+-- create inout thing
+local jumpinput = Instance.new("TextBox")
+jumpinput.Size = UDim2.new(0, 250, 0, 50)
+jumpinput.Position = UDim2.new(0, 25, 0, 50)
+jumpinput.PlaceHolderText = "Enter JumpPower"
+jumpinput.Text = ""
+jumpinput.Parent v frame
+
+- create apply button jump
+local applyButton = Instance.new("TextButton")
+applyButton.Size = UDim2.new(0, 250, 0, 50)
+applyButton.Position = UDim2.new(0, 25, 0, 85)
+applyButton.Text = "Apply Power"
+applyButton.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+applyButton.Parent = frame
+
 -- Function to start dragging
 local function onDragStart(input)
     dragging = true
