@@ -75,6 +75,19 @@ applyButton.Text = "Apply Power"
 applyButton.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
 applyButton.Parent = frame
 
+-- functionthingy for jump
+local function changeJump()
+    local Jump = tonumber(userInput.Text)
+   
+    -- Check if the input is a valid number
+    if Jump and Jump > 0 then
+        humanoid.JumpPower = Jump
+        messageLabel.Text = "Speed set to: " .. speed
+    else
+        messageLabel.Text = "Invalid Power! Please enter a positive number."
+    end
+end
+
 -- Function to start dragging
 local function onDragStart(input)
     dragging = true
